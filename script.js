@@ -43,5 +43,104 @@ const perguntas = [
             ]
         }
     ]
-    
+    let atual = 0;
+let perguntaAtual;
+
+function mostraPergunta() {
+    perguntaAtual = perguntas[atual];
+}
+function mostraPergunta() {
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+}
+
+mostraPergunta()
+let atual = 0;
+let perguntaAtual;
+
+function mostraPergunta() {
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+    mostraAlternativas();
+}
+function mostraAlternativas() {
+    for(const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
+        botaoAlternativa.textContent = alternativa;
+        caixaAlternativas.appendChild(botaoAlternativas);
+    }
+}
+
+mostraPergunta();
+
+const perguntas = [
+    {
+        enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia"
+        alternativas: [
+            {
+                texto: "Isso é assustador!",
+                afirmacao: "afirmacao"
+            },
+            {
+                texto: "Isso é maravilhoso!",
+                afirmacao: "afirmacao"
+            }
+        ]
+},
+function mostraAlternativas(){
+    for(const alternativa of perguntaAtual.alternativas){
+            const botaoAlternativas = document.createElement("button");
+            botaoAlternativas.textContent = alternativa.texto;
+            botaoAlternativas.addEventListener("click", function(){
+                atual++;
+                mostraPergunta();
+            })
+            caixaAlternativas.appendChild(botaoAlternativas);
+    }
+
+    function mostraAlternativas(){
+        for(const alternativa of perguntaAtual.alternativas) {
+            const botaoAlternativas = document.createElement("button");
+            botaoAlternativas.textContent = alternativa.texto;
+            botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+            caixaAlternativas.appendChild(botaoAlternativas);
+        }
+    }
+    function respostaSelecionada(opcaoSelecionada){
+        atual++;
+        mostraPergunta();
+    }
+    mostraPergunta();
+    function respostaSelecionada(opcaoSelecionada){
+        const afirmacoes = opcaoSelecionada.afirmacoes;
+        historiaFinal = afirmacoes;
+        atual++;
+        mostraPergunta();
+    }
+    mostraPergunta();
+    // código omitido
+
+function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
+    perguntaAtual = perguntas[atual];
+    caixaPerguntas.textContent = perguntaAtual.enunciado;
+     caixaAlternativas.textContent = "";
+    mostraAlternativas();
+}
+
+// código omitido
+
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    historia += afirmacoes + "";
+    atual++;
+    mostraPergunta();
+}
+
+// código omitido
+127.0.0.1:5500
+
 
